@@ -3,185 +3,565 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucas Martínez | Técnico Superior en Programación</title>
-  <!-- Tailwind CSS por CDN -->
+  <title>Lucas Martínez | Desarrollador de Software</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-enter { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+<body class="bg-[#090d16] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white min-h-screen relative overflow-x-hidden">
 
-  <!-- NAVBAR -->
-  <header class="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 z-50">
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-bold text-lg tracking-wider text-indigo-400">&lt;Lucas Martínez /&gt;</a>
-      <nav class="hidden md:flex space-x-6 text-sm text-slate-300 font-medium">
-        <a href="#about" class="hover:text-indigo-400 transition">Sobre mí</a>
-        <a href="#experience" class="hover:text-indigo-400 transition">Experiencia</a>
-        <a href="#skills" class="hover:text-indigo-400 transition">Habilidades</a>
-        <a href="#education" class="hover:text-indigo-400 transition">Educación</a>
-        <a href="#contact" class="hover:text-indigo-400 transition">Contacto</a>
-      </nav>
+  <!-- Patrón de fondo con brillo tenue -->
+  <div class="fixed inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none"></div>
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+  <!-- NAVBAR CON ANCLAS Y SELECTOR ES / EN -->
+  <header class="sticky top-0 w-full bg-[#090d16]/85 backdrop-blur-md border-b border-slate-800/80 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <!-- Isotipo e identidad minimalista -->
+       <a href="#about" class="flex items-center gap-2 group py-1">
+  <span class="text-indigo-400 font-mono text-base font-bold">/</span>
+  <div class="flex flex-col">
+    <span class="text-sm font-bold tracking-tight text-white group-hover:text-indigo-300 transition leading-none">
+      Lucas Martínez
+    </span>
+    <span class="text-[10px] font-mono text-slate-500 tracking-wider uppercase mt-1">
+      Software Dev
+    </span>
+  </div>
+</a>
+      <!-- Menú de anclas y Switcher ES/EN -->
+      <div class="flex items-center gap-6">
+        <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-400">
+          <a href="#about" class="hover:text-indigo-300 transition" data-i18n="nav_about">Sobre mí</a>
+          <a href="#skills" class="hover:text-indigo-300 transition" data-i18n="nav_skills">Habilidades</a>
+          <a href="#experience" class="hover:text-indigo-300 transition" data-i18n="nav_exp">Experiencia</a>
+          <a href="#contact" class="hover:text-indigo-300 transition" data-i18n="nav_contact">Contacto</a>
+        </nav>
+
+        <!-- Botones Selector de Idioma -->
+        <div class="flex items-center border border-slate-800 rounded-lg p-0.5 bg-slate-900/80 text-xs font-mono">
+          <button id="btn-es" onclick="changeLanguage('es')" class="px-2.5 py-1 rounded bg-indigo-600 text-white font-semibold transition">ES</button>
+          <button id="btn-en" onclick="changeLanguage('en')" class="px-2.5 py-1 rounded text-slate-400 hover:text-white transition">EN</button>
+        </div>
+      </div>
+
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-6 pt-32 space-y-24">
+  <main class="max-w-5xl mx-auto px-6 relative z-10">
 
-    <!-- HERO SECTION -->
-    <section class="flex flex-col items-start gap-6 py-8 md:py-16">
-      <span class="px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950/50 border border-indigo-800 rounded-full">
-        Disponible para oportunidades laborales
-      </span>
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-        Hola, soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Lucas Martínez</span>.
-      </h1>
-      <p class="text-xl font-medium text-slate-300">
-        Técnico Superior en Programación | Estudiante de Licenciatura en Informática
-      </p>
-      <p class="text-base md:text-lg text-slate-400 max-w-2xl leading-relaxed">
-        Enfocado en el desarrollo de software, tecnologías de la información y resolución de problemas técnicos mediante herramientas modernas, desarrollo web, entornos Linux y bases de datos relacionales.
-      </p>
-      <div class="flex flex-wrap gap-4 pt-2">
-        <a href="#experience" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg shadow-lg shadow-indigo-500/20 transition">
-          Ver Experiencia
-        </a>
-        <a href="https://linkedin.com/in/lucas-martineez/" target="_blank" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-lg border border-slate-700 transition">
-          LinkedIn ↗
-        </a>
+    <!-- 1. PANTALLA PRINCIPAL / SOBRE MÍ (#about) -->
+    <section id="about" class="min-h-[calc(100vh-4rem)] flex flex-col justify-center py-16 space-y-6 opacity-0 animate-enter delay-1 scroll-mt-20">
+      
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium w-fit">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span data-i18n="status_badge">Disponible para proyectos y empleo</span>
       </div>
-    </section>
-
-    <!-- SOBRE MÍ -->
-    <section id="about" class="space-y-6">
-      <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-3">
-        <span class="text-indigo-400 font-mono text-lg">01.</span> Perfil Profesional
-      </h2>
-      <div class="text-slate-400 leading-relaxed space-y-4 max-w-3xl">
-        <p>
-          Técnico en Programación con enfoque en el desarrollo de software, las tecnologías de la información y la resolución de problemas mediante herramientas tecnológicas.
-        </p>
-        <p>
-          Cuento con experiencia práctica en desarrollo web y sólidos conocimientos en programación, redes, sistemas operativos y herramientas de control de versiones y despliegue.
-        </p>
-      </div>
-    </section>
-
-    <!-- EXPERIENCIA LABORAL -->
-    <section id="experience" class="space-y-6">
-      <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-3">
-        <span class="text-indigo-400 font-mono text-lg">02.</span> Experiencia Laboral
-      </h2>
-
-      <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl space-y-4">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
-          <div>
-            <h3 class="text-xl font-bold text-white">Práctica Profesional</h3>
-            <p class="text-indigo-400 font-medium">Palta Tech</p>
-          </div>
-          <span class="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded-full w-fit">Desarrollo Web & Entornos</span>
-        </div>
-        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
-          <li>Participación en el desarrollo y mantenimiento de sitios web.</li>
-          <li>Desarrollo y edición de páginas utilizando WordPress.</li>
-          <li>Utilización de Git para el control de versiones y flujo colaborativo.</li>
-          <li>Trabajo en entornos y servidores Linux.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
-          <span class="px-2.5 py-1 text-xs bg-slate-800 text-slate-300 rounded font-mono">WordPress</span>
-          <span class="px-2.5 py-1 text-xs bg-slate-800 text-slate-300 rounded font-mono">Git</span>
-          <span class="px-2.5 py-1 text-xs bg-slate-800 text-slate-300 rounded font-mono">Linux</span>
-          <span class="px-2.5 py-1 text-xs bg-slate-800 text-slate-300 rounded font-mono">HTML / JS</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- HABILIDADES -->
-    <section id="skills" class="space-y-6">
-      <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-3">
-        <span class="text-indigo-400 font-mono text-lg">03.</span> Habilidades Técnicas
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
-          <h3 class="font-semibold text-slate-200">Tecnologías Web</h3>
-          <p class="text-sm text-slate-400">HTML, JavaScript, WordPress, Git y GitHub</p>
-        </div>
-
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
-          <h3 class="font-semibold text-slate-200">Desarrollo de Software</h3>
-          <p class="text-sm text-slate-400">Programación en Java y C++</p>
-        </div>
-
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
-          <h3 class="font-semibold text-slate-200">Bases de Datos</h3>
-          <p class="text-sm text-slate-400">MySQL y PostgreSQL</p>
-        </div>
-
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
-          <h3 class="font-semibold text-slate-200">Redes Informáticas</h3>
-          <p class="text-sm text-slate-400">Cisco Packet Tracer, Wireshark</p>
-        </div>
-
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
-          <h3 class="font-semibold text-slate-200">Soporte Técnico</h3>
-          <p class="text-sm text-slate-400">Diagnóstico de fallas, sistemas operativos, drivers y mantenimiento preventivo</p>
-        </div>
-
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
-          <h3 class="font-semibold text-slate-200">Idiomas</h3>
-          <p class="text-sm text-slate-400">Inglés Técnico (Intermedio - Lectura y comprensión de documentación)</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- EDUCACIÓN -->
-    <section id="education" class="space-y-6">
-      <h2 class="text-2xl font-bold tracking-tight text-white flex items-center gap-3">
-        <span class="text-indigo-400 font-mono text-lg">04.</span> Educación
-      </h2>
 
       <div class="space-y-4">
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-2">
-          <div>
-            <h3 class="font-bold text-white text-lg">Licenciatura en Informática</h3>
-            <p class="text-indigo-400 text-sm">Universidad Siglo 21</p>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+          <span data-i18n="hero_hi">Hola, soy</span> <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-indigo-200">
+            Lucas Martínez
+          </span>
+        </h1>
+        <p class="text-xl sm:text-2xl text-indigo-300/90 font-medium max-w-3xl" data-i18n="hero_subtitle">
+          Técnico Superior en Programación · Estudiante de Lic. en Informática
+        </p>
+      </div>
+
+      <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl" data-i18n="hero_desc">
+        Especializado en tecnologías de software, entornos Linux y bases de datos relacionales. Combino fundamentos sólidos de ingeniería con experiencia práctica en desarrollo web y resolución estructurada de problemas.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-4">
+        <a href="https://linkedin.com/in/lucas-martineez/" target="_blank" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-xl text-sm transition-all duration-200 shadow-lg shadow-indigo-600/20 hover:-translate-y-0.5">
+          LinkedIn ↗
+        </a>
+        <a href="https://github.com/Lukasnez" target="_blank" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-medium rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5">
+          GitHub ↗
+        </a>
+        <button id="copyEmailBtn" class="px-5 py-3 bg-slate-900/60 hover:bg-slate-800 text-slate-300 border border-slate-800 font-mono text-xs rounded-xl transition flex items-center gap-2 group">
+          <span id="btnText">lucasmartinnez17@gmail.com</span>
+          <span class="text-slate-500 group-hover:text-indigo-400">📋</span>
+        </button>
+      </div>
+
+      <div class="pt-8">
+        <a href="#skills" class="text-xs font-mono text-slate-500 hover:text-indigo-400 inline-flex items-center gap-1.5 transition">
+          <span data-i18n="scroll_hint">Continuar explorando</span> ↓
+        </a>
+      </div>
+
+    </section>
+
+    <!-- 2. HABILIDADES (#skills) -->
+    <section id="skills" class="py-24 border-t border-slate-800/80 space-y-8 scroll-mt-20">
+      <div>
+        <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="skills_tag">CONOCIMIENTOS</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1" data-i18n="skills_title">Habilidades Técnicas & Stack</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl space-y-3">
+          <h3 class="font-bold text-white text-base" data-i18n="sk_group1">Desarrollo de Software</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="sk_group1_desc">Lógica estructurada, algoritmos y programación orientada a objetos.</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">Java</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">C++</span>
           </div>
-          <span class="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded w-fit">2025 - En curso</span>
         </div>
 
-        <div class="p-5 bg-slate-900 border border-slate-800 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-2">
-          <div>
-            <h3 class="font-bold text-white text-lg">Tecnicatura Superior en Programación</h3>
-            <p class="text-indigo-400 text-sm">Instituto Técnico Superior Teclab</p>
+        <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl space-y-3">
+          <h3 class="font-bold text-white text-base" data-i18n="sk_group2">Desarrollo Web & CMS</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="sk_group2_desc">Construcción de interfaces, maquetación y gestión de plataformas.</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">HTML / JS</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">WordPress</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">Tailwind CSS</span>
           </div>
-          <span class="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded w-fit">2023 - 2025</span>
         </div>
+
+        <div class="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl space-y-3">
+          <h3 class="font-bold text-white text-base" data-i18n="sk_group3">Datos, Entornos & Redes</h3>
+          <p class="text-xs text-slate-400 leading-relaxed" data-i18n="sk_group3_desc">Modelado de bases de datos, sistemas operativos y redes.</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">MySQL</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">PostgreSQL</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">Linux</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">Git & GitHub</span>
+            <span class="px-2.5 py-1 bg-slate-800 border border-slate-700/60 text-slate-300 rounded-lg text-xs font-mono">Wireshark</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section id="contact" class="py-12 border-t border-slate-800 text-center space-y-4">
-      <h2 class="text-3xl font-extrabold text-white">Contacto</h2>
-      <p class="text-slate-400 max-w-md mx-auto text-sm">
-        Disponible para contactar vía correo electrónico, LinkedIn o teléfono.
+    <!-- 3. EXPERIENCIA Y TRAYECTORIA (#experience) -->
+    <section id="experience" class="py-24 border-t border-slate-800/80 space-y-8 scroll-mt-20">
+      <div>
+        <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="exp_tag">TRAYECTORIA</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1" data-i18n="exp_title">Formación, Práctica & Proyectos</h2>
+        <p class="text-slate-400 text-sm mt-1" data-i18n="exp_subtitle">Hacé clic en cualquiera de las tarjetas para ver la información detallada.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 01 -> Abre Modal Estudios -->
+        <button onclick="openModal('modalEstudios')" class="w-full text-left group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/30 flex flex-col justify-between">
+          <div>
+            <div class="flex items-start justify-between">
+              <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="card1_tag">01 / FORMACIÓN</span>
+              <span class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-indigo-500/50 group-hover:translate-x-1 transition-all duration-300">
+                →
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-white mt-4 mb-2" data-i18n="card1_title">Estudios y Certificaciones</h3>
+            <div class="space-y-1 text-sm text-slate-400">
+              <p><strong class="text-slate-200 font-medium">Licenciatura en Informática</strong> — Univ. Siglo 21</p>
+              <p><strong class="text-slate-200 font-medium">Técnico Superior en Programación</strong> — Teclab</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-indigo-400 mt-4 inline-block group-hover:underline" data-i18n="card_detail">Ver detalles ↗</span>
+        </button>
+
+        <!-- Card 02 -> Abre Modal Experiencia -->
+        <button onclick="openModal('modalExperiencia')" class="w-full text-left group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/30 flex flex-col justify-between">
+          <div>
+            <div class="flex items-start justify-between">
+              <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="card2_tag">02 / TRAYECTORIA</span>
+              <span class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-indigo-500/50 group-hover:translate-x-1 transition-all duration-300">
+                →
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-white mt-4 mb-1" data-i18n="card2_title">Experiencia Laboral</h3>
+            <p class="text-xs text-indigo-400 font-mono mb-2" data-i18n="card2_subtitle">Palta Tech · Práctica Profesional</p>
+            <p class="text-sm text-slate-400" data-i18n="card2_desc">
+              Mantenimiento web, WordPress, control de versiones con Git y Linux.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-indigo-400 mt-4 inline-block group-hover:underline" data-i18n="card_detail">Ver tareas realizadas ↗</span>
+        </button>
+
+        <!-- Card 03 -> Abre Modal Proyectos -->
+        <button onclick="openModal('modalProyectos')" class="w-full text-left group p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-900/40 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/30 flex flex-col justify-between">
+          <div>
+            <div class="flex items-start justify-between">
+              <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="card3_tag">03 / PROYECTOS & LAB</span>
+              <span class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-indigo-500/50 group-hover:translate-x-1 transition-all duration-300">
+                →
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-white mt-4 mb-2" data-i18n="card3_title">Proyectos & Redes</h3>
+            <p class="text-sm text-slate-400" data-i18n="card3_desc">
+              Desarrollo de software, análisis y simulaciones de redes en Cisco Packet Tracer y Wireshark.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-indigo-400 mt-4 inline-block group-hover:underline" data-i18n="card_detail">Ver laboratorio ↗</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- 4. CONTACTO (#contact) -->
+     <!-- SECCIÓN CONTACTO (#contact) -->
+<section id="contact" class="py-24 border-t border-slate-800/80 scroll-mt-20">
+  
+  <div class="p-8 md:p-12 rounded-3xl bg-slate-900/60 border border-slate-800/90 backdrop-blur-sm shadow-2xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+      <!-- Columna izquierda: Información directa -->
+      <div class="lg:col-span-5 space-y-6">
+        <div>
+          <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="contact_tag">COMUNICACIÓN</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1" data-i18n="contact_title">Hablemos</h2>
+        </div>
+        
+        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="contact_desc">
+          Siempre estoy abierto a nuevas oportunidades, proyectos y desafíos técnicos. Si tenés una propuesta o querés conectar, ¡escribime!
+        </p>
+
+        <div class="space-y-4 pt-2 text-sm">
+          <!-- Email directo -->
+          <a href="mailto:lucasmartinnez17@gmail.com" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 transition group">
+            <span class="w-9 h-9 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-indigo-400 group-hover:border-indigo-500/50 transition">
+              ✉
+            </span>
+            <span class="font-mono text-xs sm:text-sm">lucasmartinnez17@gmail.com</span>
+          </a>
+
+          <!-- Ubicación -->
+          <div class="flex items-center gap-3 text-slate-300">
+            <span class="w-9 h-9 rounded-xl bg-slate-800/70 border border-slate-700/60 flex items-center justify-center text-indigo-400">
+              📍
+            </span>
+            <span class="text-xs sm:text-sm">Bahia Blanca, Buenos Aires, Argentina</span>
+          </div>
+        </div>
+
+        <!-- Botones de redes -->
+        <div class="flex items-center gap-3 pt-4">
+          <a href="https://linkedin.com/in/lucas-martineez/" target="_blank" class="px-5 py-2.5 rounded-xl border border-slate-700 bg-slate-800/60 hover:bg-indigo-600 hover:border-indigo-500 text-slate-200 hover:text-white font-mono text-xs font-semibold transition">
+            LinkedIn ↗
+          </a>
+          <a href="https://github.com/Lukasnez" target="_blank" class="px-5 py-2.5 rounded-xl border border-slate-700 bg-slate-800/60 hover:bg-slate-700 hover:border-slate-600 text-slate-200 hover:text-white font-mono text-xs font-semibold transition">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Formulario de contacto -->
+      <form action="https://formspree.io/f/xbjnvpzw" method="POST" class="lg:col-span-7 space-y-4 text-xs font-mono">
+        <div>
+          <label class="block text-slate-400 mb-1.5" data-i18n="form_name">Nombre</label>
+          <input type="text" name="name" required placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl bg-[#0b0f19] border border-slate-800 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition text-sm">
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1.5" data-i18n="form_email">Email</label>
+          <input type="email" name="email" required placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl bg-[#0b0f19] border border-slate-800 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition text-sm">
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1.5" data-i18n="form_subject">Asunto</label>
+          <input type="text" name="subject" required placeholder="Motivo de tu mensaje" class="w-full px-4 py-3 rounded-xl bg-[#0b0f19] border border-slate-800 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition text-sm">
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1.5" data-i18n="form_msg">Mensaje</label>
+          <textarea name="message" rows="4" required placeholder="Escribí tu mensaje acá..." class="w-full px-4 py-3 rounded-xl bg-[#0b0f19] border border-slate-800 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition text-sm resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-sans font-semibold text-sm transition-all duration-200 shadow-lg shadow-indigo-600/20 hover:-translate-y-0.5 flex items-center justify-center gap-2">
+          <span data-i18n="form_btn">Enviar mensaje</span>
+          <span>→</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+</section>
+    <!-- <section id="contact" class="py-24 border-t border-slate-800/80 text-center space-y-6 scroll-mt-20">
+      <div>
+        <span class="font-mono text-xs text-indigo-400 font-semibold tracking-wider" data-i18n="contact_tag">COMUNICACIÓN</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1" data-i18n="contact_title">Contacto</h2>
+      </div>
+      <p class="text-slate-400 max-w-md mx-auto text-sm" data-i18n="contact_desc">
+        Disponible para conversar sobre oportunidades laborales, desarrollo y proyectos de software.
       </p>
-      <div class="flex flex-wrap justify-center gap-4 pt-4">
-        <a href="mailto:lucasmartinnez17@gmail.com" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition">
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a href="mailto:lucasmartinnez17@gmail.com" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-medium transition text-sm shadow-lg shadow-indigo-600/20">
           lucasmartinnez17@gmail.com
         </a>
-        <a href="tel:+542932579545" class="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium border border-slate-700 transition">
+        <a href="tel:+542932579545" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-slate-200 rounded-xl font-medium border border-slate-800 transition text-sm">
           2932-579545
         </a>
-        <a href="https://linkedin.com/in/lucas-martineez/" target="_blank" class="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium border border-slate-700 transition">
+        <a href="https://linkedin.com/in/lucas-martineez/" target="_blank" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-slate-200 rounded-xl font-medium border border-slate-800 transition text-sm">
           LinkedIn ↗
         </a>
       </div>
-    </section>
+    </section> -->
 
   </main>
 
-  <footer class="text-center py-8 text-xs text-slate-600 border-t border-slate-900">
-    © Lucas Martínez · Publicado en GitHub Pages
+  <!-- FOOTER -->
+  <footer class="max-w-5xl mx-auto px-6 py-8 border-t border-slate-800/60 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <p data-i18n="footer_copy">© 2026 Lucas Martínez · Todos los derechos reservados</p>
+    <p class="font-mono">Hecho con HTML, Tailwind CSS & Git</p>
   </footer>
+
+  <!-- MODAL 01: ESTUDIOS -->
+  <div id="modalEstudios" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative">
+      <button onclick="closeModal('modalEstudios')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">✕</button>
+      <div>
+        <span class="text-xs font-mono text-indigo-400 font-semibold" data-i18n="modal1_tag">01 / FORMACIÓN ACADÉMICA</span>
+        <h3 class="text-2xl font-bold text-white mt-1" data-i18n="modal1_title">Estudios y Certificaciones</h3>
+      </div>
+      <div class="space-y-4">
+        <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 space-y-1">
+          <span class="text-xs font-mono text-indigo-400" data-i18n="modal1_date1">2025 - En curso</span>
+          <h4 class="font-bold text-white text-base">Licenciatura en Informática</h4>
+          <p class="text-slate-300 text-sm">Universidad Siglo 21</p>
+          <p class="text-slate-400 text-xs pt-1" data-i18n="modal1_sub1">Algoritmos, estructuras de datos, sistemas distribuidos e ingeniería de software.</p>
+        </div>
+        <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 space-y-1">
+          <span class="text-xs font-mono text-slate-400">2023 - 2025</span>
+          <h4 class="font-bold text-white text-base">Tecnicatura Superior en Programación</h4>
+          <p class="text-slate-300 text-sm">Instituto Técnico Superior Teclab</p>
+          <p class="text-slate-400 text-xs pt-1" data-i18n="modal1_sub2">Lógica orientada a objetos (Java, C++), bases de datos y desarrollo web.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 02: EXPERIENCIA -->
+  <div id="modalExperiencia" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative">
+      <button onclick="closeModal('modalExperiencia')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">✕</button>
+      <div>
+        <span class="text-xs font-mono text-indigo-400 font-semibold" data-i18n="modal2_tag">02 / TRAYECTORIA LABORAL</span>
+        <h3 class="text-2xl font-bold text-white mt-1" data-i18n="modal2_title">Experiencia Profesional</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h4 class="text-lg font-bold text-white">Palta Tech</h4>
+          <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded" data-i18n="modal2_badge">Práctica Profesional</span>
+        </div>
+        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm leading-relaxed">
+          <li data-i18n="modal2_li1">Participación en el mantenimiento y actualización continua de sitios web.</li>
+          <li data-i18n="modal2_li2">Desarrollo y edición de páginas utilizando WordPress.</li>
+          <li data-i18n="modal2_li3">Control de versiones colaborativo y gestión de ramas con Git y GitHub.</li>
+          <li data-i18n="modal2_li4">Operación y tareas dentro de entornos Linux.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 03: PROYECTOS -->
+  <div id="modalProyectos" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative">
+      <button onclick="closeModal('modalProyectos')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">✕</button>
+      <div>
+        <span class="text-xs font-mono text-indigo-400 font-semibold" data-i18n="modal3_tag">03 / PROYECTOS & LABORATORIO</span>
+        <h3 class="text-2xl font-bold text-white mt-1" data-i18n="modal3_title">Redes y Desarrollo de Software</h3>
+      </div>
+      <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+        <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 space-y-1">
+          <h4 class="font-bold text-white" data-i18n="modal3_h1">Simulación de Redes</h4>
+          <p class="text-slate-400 text-xs" data-i18n="modal3_d1">Modelado topológico, enrutamiento y análisis de paquetes con Cisco Packet Tracer y Wireshark.</p>
+        </div>
+        <div class="p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 space-y-1">
+          <h4 class="font-bold text-white" data-i18n="modal3_h2">Soporte y Sistemas Operativos</h4>
+          <p class="text-slate-400 text-xs" data-i18n="modal3_d2">Instalación y configuración de entornos Linux/Windows, mantenimiento preventivo y depuración de controladores.</p>
+        </div>
+        <a href="https://github.com/Lukasnez" target="_blank" class="block w-full py-2.5 text-center bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-xl text-xs transition" data-i18n="modal3_btn">
+          Ver repositorios en GitHub ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT DE MODALES, COPIAR Y TRADUCCIONES -->
+  <script>
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    ['modalEstudios', 'modalExperiencia', 'modalProyectos'].forEach(id => {
+      document.getElementById(id).addEventListener('click', (e) => {
+        if (e.target.id === id) closeModal(id);
+      });
+    });
+
+    const btn = document.getElementById('copyEmailBtn');
+    const btnText = document.getElementById('btnText');
+    const email = 'lucasmartinnez17@gmail.com';
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = btnText.innerText;
+        btnText.innerText = '¡Copiado!';
+        btnText.classList.add('text-emerald-400');
+        setTimeout(() => {
+          btnText.innerText = originalText;
+          btnText.classList.remove('text-emerald-400');
+        }, 1800);
+      });
+    });
+
+    const translations = {
+      es: {
+        nav_about: "Sobre mí",
+        nav_skills: "Habilidades",
+        nav_exp: "Experiencia",
+        nav_contact: "Contacto",
+        status_badge: "Disponible para proyectos y empleo",
+        hero_hi: "Hola, soy",
+        hero_subtitle: "Técnico Superior en Programación · Estudiante de Lic. en Informática",
+        hero_desc: "Especializado en tecnologías de software, entornos Linux y bases de datos relacionales. Combino fundamentos sólidos de ingeniería con experiencia práctica en desarrollo web y resolución estructurada de problemas.",
+        scroll_hint: "Continuar explorando",
+        skills_tag: "CONOCIMIENTOS",
+        skills_title: "Habilidades Técnicas & Stack",
+        sk_group1: "Desarrollo de Software",
+        sk_group1_desc: "Lógica estructurada, algoritmos y programación orientada a objetos.",
+        sk_group2: "Desarrollo Web & CMS",
+        sk_group2_desc: "Construcción de interfaces, maquetación y gestión de plataformas.",
+        sk_group3: "Datos, Entornos & Redes",
+        sk_group3_desc: "Modelado de bases de datos, sistemas operativos y redes.",
+        exp_tag: "TRAYECTORIA",
+        exp_title: "Formación, Práctica & Proyectos",
+        exp_subtitle: "Hacé clic en cualquiera de las tarjetas para ver la información detallada.",
+        card1_tag: "01 / FORMACIÓN",
+        card1_title: "Estudios y Certificaciones",
+        card2_tag: "02 / TRAYECTORIA",
+        card2_title: "Experiencia Laboral",
+        card2_subtitle: "Palta Tech · Práctica Profesional",
+        card2_desc: "Mantenimiento web, WordPress, control de versiones con Git y Linux.",
+        card3_tag: "03 / PROYECTOS & LAB",
+        card3_title: "Proyectos & Redes",
+        card3_desc: "Desarrollo de software, análisis y simulaciones de redes en Cisco Packet Tracer y Wireshark.",
+        card_detail: "Ver detalles ↗",
+        contact_tag: "COMUNICACIÓN",
+        contact_title: "Contacto",
+        contact_desc: "Disponible para conversar sobre oportunidades laborales, desarrollo y proyectos de software.",
+        footer_copy: "© 2026 Lucas Martínez · Todos los derechos reservados",
+        modal1_tag: "01 / FORMACIÓN ACADÉMICA",
+        modal1_title: "Estudios y Certificaciones",
+        modal1_date1: "2025 - En curso",
+        modal1_sub1: "Algoritmos, estructuras de datos, sistemas distribuidos e ingeniería de software.",
+        modal1_sub2: "Lógica orientada a objetos (Java, C++), bases de datos y desarrollo web.",
+        modal2_tag: "02 / TRAYECTORIA LABORAL",
+        modal2_title: "Experiencia Profesional",
+        modal2_badge: "Práctica Profesional",
+        modal2_li1: "Participación en el mantenimiento y actualización continua de sitios web.",
+        modal2_li2: "Desarrollo y edición de páginas utilizando WordPress.",
+        modal2_li3: "Control de versiones colaborativo y gestión de ramas con Git y GitHub.",
+        modal2_li4: "Operación y tareas dentro de entornos Linux.",
+        modal3_tag: "03 / PROYECTOS & LABORATORIO",
+        modal3_title: "Redes y Desarrollo de Software",
+        modal3_h1: "Simulación de Redes",
+        modal3_d1: "Modelado topológico, enrutamiento y análisis de paquetes con Cisco Packet Tracer y Wireshark.",
+        modal3_h2: "Soporte y Sistemas Operativos",
+        modal3_d2: "Instalación y configuración de entornos Linux/Windows, mantenimiento preventivo y depuración de controladores.",
+        modal3_btn: "Ver repositorios en GitHub ↗",
+        form_name: "Nombre",
+        form_email: "Email",
+        form_subject: "Asunto",
+        form_msg: "Mensaje",
+        form_btn: "Enviar mensaje"
+      },  
+      en: {
+        nav_about: "About me",
+        nav_skills: "Skills",
+        nav_exp: "Experience",
+        nav_contact: "Contact",
+        status_badge: "Available for projects and job opportunities",
+        hero_hi: "Hi, I'm",
+        hero_subtitle: "Associate Degree in Programming · Computer Science Student",
+        hero_desc: "Specialized in software technologies, Linux environments, and relational databases. Combining solid software engineering foundations with hands-on web development and structured problem-solving.",
+        scroll_hint: "Keep exploring",
+        skills_tag: "TECHNICAL EXPERTISE",
+        skills_title: "Technical Skills & Stack",
+        sk_group1: "Software Development",
+        sk_group1_desc: "Structured logic, algorithms, and object-oriented programming.",
+        sk_group2: "Web Development & CMS",
+        sk_group2_desc: "Interface building, layout design, and platform management.",
+        sk_group3: "Data, Environments & Networking",
+        sk_group3_desc: "Database modeling, operating systems, and network protocols.",
+        exp_tag: "BACKGROUND",
+        exp_title: "Education, Experience & Projects",
+        exp_subtitle: "Click on any card to view detailed information.",
+        card1_tag: "01 / EDUCATION",
+        card1_title: "Studies & Certifications",
+        card2_tag: "02 / BACKGROUND",
+        card2_title: "Work Experience",
+        card2_subtitle: "Palta Tech · Professional Internship",
+        card2_desc: "Web maintenance, WordPress editing, version control with Git, and Linux administration.",
+        card3_tag: "03 / PROJECTS & LAB",
+        card3_title: "Projects & Networking",
+        card3_desc: "Software development, network analysis and simulations using Cisco Packet Tracer and Wireshark.",
+        card_detail: "View details ↗",
+        contact_tag: "COMMUNICATION",
+        contact_title: "Contact",
+        contact_desc: "Available to discuss employment opportunities, development, and software projects.",
+        footer_copy: "© 2026 Lucas Martínez · All rights reserved",
+        modal1_tag: "01 / ACADEMIC BACKGROUND",
+        modal1_title: "Studies and Certifications",
+        modal1_date1: "2025 - Present",
+        modal1_sub1: "Algorithms, data structures, distributed systems, and software engineering.",
+        modal1_sub2: "Object-oriented programming (Java, C++), databases, and web development.",
+        modal2_tag: "02 / WORK HISTORY",
+        modal2_title: "Professional Experience",
+        modal2_badge: "Professional Internship",
+        modal2_li1: "Active involvement in continuous website maintenance and updates.",
+        modal2_li2: "Building and customizing page layouts using WordPress.",
+        modal2_li3: "Collaborative version control and branch workflows using Git and GitHub.",
+        modal2_li4: "Linux server and system environment operations.",
+        modal3_tag: "03 / PROJECTS & LAB",
+        modal3_title: "Networking & Software Development",
+        modal3_h1: "Network Simulation",
+        modal3_d1: "Topological modeling, routing, and packet inspection using Cisco Packet Tracer and Wireshark.",
+        modal3_h2: "Technical Support & Operating Systems",
+        modal3_d2: "Clean installation and setup of Linux/Windows environments, maintenance, and driver troubleshooting.",
+        modal3_btn: "View repositories on GitHub ↗",
+        form_name: "Name",
+        form_email: "Email",
+        form_subject: "Subject",
+        form_msg: "Message",
+        form_btn: "Send message"
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+
+      const btnEs = document.getElementById('btn-es');
+      const btnEn = document.getElementById('btn-en');
+      if (lang === 'en') {
+        btnEn.className = "px-2.5 py-1 rounded bg-indigo-600 text-white font-semibold transition";
+        btnEs.className = "px-2.5 py-1 rounded text-slate-400 hover:text-white transition";
+      } else {
+        btnEs.className = "px-2.5 py-1 rounded bg-indigo-600 text-white font-semibold transition";
+        btnEn.className = "px-2.5 py-1 rounded text-slate-400 hover:text-white transition";
+      }
+    }
+  </script>
 
 </body>
 </html>
