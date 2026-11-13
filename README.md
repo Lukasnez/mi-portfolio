@@ -2,7 +2,7 @@
 
 Sitio web personal diseñado y desarrollado para presentar mi formación académica, experiencia práctica, habilidades técnicas y proyectos de software y redes.
 
-🔗 **Demo en vivo:** [lukasnez.github.io/mi-portfolio](https://lukasnez.github.io/mi-portfolio/)
+🔗 **Demo en vivo:** [lukasnez.github.io](https://lukasnez.github.io/)
 
 ## 🚀 Características principales
 * **Diseño Bento & Minimalista:** Interfaz moderna con modo oscuro nativo y animaciones fluidas.
