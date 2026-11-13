@@ -19,4 +19,4 @@ Sitio web personal diseñado y desarrollado para presentar mi formación académ
 
 ## 📫 Contacto
 * **LinkedIn:** [linkedin.com/in/lucas-martineez](https://linkedin.com/in/lucas-martineez/)
-* **Email:** lucasmartinnez17@gmail.com
+* **Email:** lucasmartinnez17@gmail.comg
